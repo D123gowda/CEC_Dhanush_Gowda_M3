@@ -1,0 +1,15 @@
+div {
+    height: 200px;
+    width: 300px;
+    border-width: 200px;
+    border-style: 200;
+    color: blue;
+    margin: 10px; 
+}
+div {
+    border-left: red;
+    border-right: red;
+    border-top: red;
+    border-bottom:red;
+    border-style: solid;
+}
