@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif; padding: 2rem;}
+        .container{max-width: 100px; margin:  auto;}
+        label{display: block; margin-top: 1.75rem;}
+        input[type=text], input[type=Email],input[type=password] {width: 100; padding: 10px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div  class="form-group"> 
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required>
+                <div class="error-message" id="usernameError"></div>
+           
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError"></div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+                
+                <div class="error-message" id="passwordError"></div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label> <br>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+               
+                <div class="error-message" id="confirmPasswordError"></div>
+           
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script src="script.js"></script> 
+    
+</body>
+</html>

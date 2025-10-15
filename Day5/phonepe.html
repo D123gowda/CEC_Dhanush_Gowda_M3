@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+        .success-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        .success-icon {
+            color: #28a745;
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            font-size: 18px;
+        }
+        .order-details {
+            margin-top: 20px;
+            text-align: left;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .order-details p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">&#10003;</div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+        <div class="order-details">
+            <!-- Order details can be dynamically added here using JavaScript -->
+            <p><strong>Transaction ID:</strong> <span id="transaction-id">123456789</span></p>
+            <p><strong>Amount Paid:</strong> ₹ <span id="amount">5000.00</span></p>
+        </div>
+    </div>
+</body>
+</html>

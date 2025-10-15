@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe Mini-Project</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .container { max-width: 600px; margin: auto; padding: 2em; border: 1px solid #ccc; border-radius: 8px; }
+        input, button { display: block; width: 100%; padding: 10px; margin-bottom: 1em; }
+        button { background-color: #673ab7; color: white; border: none; cursor: pointer; }
+        .success-message { color: green; font-size: 1.2em; font-weight: bold; display: none; }
+        .error-message { color: red; font-size: 1.2em; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+    <a href="phonepe.html">payment Successful</a>
+    <div class="container">
+        <h2>MoneyPe</h2>
+        
+        <!-- Login Form -->
+        <form action="login" method="post">
+            <h3>User Login</h3>
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Transaction Form (Shown after login) -->
+        <div id="transaction-section" style="display: none;">
+            <h3>Make a Payment</h3>
+            <form id="payment-form">
+                <p>Logged in as: <span id="current-user-id"></span></p>
+                <label for="recipientId">Recipient User ID:</label>
+                <input type="text" id="recipientId" name="recipientId" required>
+                <label for="amount">Amount (INR):</label>
+                <input type="number" id="amount" name="amount" min="1" required>
+                <button type="submit">Pay Now</button>
+            </form>
+            <hr>
+            <h3>Transaction History</h3>
+            <ul id="history-list"></ul>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="success-message">
+            Payment Successful!
+        </div>
+        <!-- Error Message -->
+        <div class="error-message" id="error-message">
+            Something went wrong, please try again.
+        </div>
+    </div>
+
+    <script>
+        // Simulate user login via local storage
+        document.querySelector('form[action="login"]').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userId = document.getElementById('userId').value;
+            localStorage.setItem('loggedInUser', userId);
+            document.getElementById('current-user-id').textContent = userId;
+            document.getElementById('transaction-section').style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        // Simulate transaction display
+        const history = [
+            { recipient: 'userB', amount: 500, date: '2025-10-14' },
+            { recipient: 'userC', amount: 250, date: '2025-10-13' }
+        ];
+        const historyList = document.getElementById('history-list');
+        history.forEach(tx => {
+            const li = document.createElement('li');
+            li.textContent = `Paid ${tx.amount} to ${tx.recipient} on ${tx.date}`;
+            historyList.appendChild(li);
+        });
+
+        // Handle payment form submission
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+
+            // Simulate payment process
+            const recipientId = document.getElementById('recipientId').value;
+            const amount = document.getElementById('amount').value;
+
+            // Assume payment is successful, and show the success message
+            if (recipientId && amount) {
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('error-message').style.display = 'none';
+
+                // Optionally, you can add the new transaction to history
+                const newTransaction = { recipient: recipientId, amount: amount, date: new Date().toISOString().split('T')[0] };
+                history.push(newTransaction);
+
+                // Update transaction history UI
+                const li = document.createElement('li');
+                li.textContent = `Paid ${newTransaction.amount} to ${newTransaction.recipient} on ${newTransaction.date}`;
+                historyList.appendChild(li);
+
+                // Optionally, hide the transaction form after payment
+                document.getElementById('transaction-section').style.display = 'none';
+            } else {
+                // If payment failed for some reason, show the error message
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('success-message').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

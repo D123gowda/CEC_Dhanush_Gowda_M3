@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container mt-5 p-4 bg-white shadow rounded w-50">
+        <h3 class="text-center mb-4">Add Two  Numbers</h3>
+        <div class="mb-3" >
+            <input type="number" id="num1" class="form-control" placeholder="Enter first number">
+        </div>
+        <div class="mb-3" >
+            <input type="number" id="num2" class="form-control" placeholder="Enter Second number">
+        </div>
+        <button class="btn btn-primary w-100" onclick="addnumbers()">Add</button>
+        <h5 class="mt-3 text-center" id="result"></h5>
+    </div>
+
+    <script>
+        function addNumbers() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            let sum = n1 + n2;
+            document.getElementById("result").innerText = "Result: " + sum;
+        }
+    </script>
+</body>
+</html>
